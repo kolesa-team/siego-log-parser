@@ -16,7 +16,7 @@ func main() {
 
 	app.Name = "siego-log-parser"
 	app.Usage = "Log parser for siego. Bridge from XML files to statsd."
-	app.Version = "0.0.1"
+	app.Version = "0.0.2"
 	app.Author = "Igor Borodikhin"
 	app.Email = "iborodikhin@gmail.com"
 	app.Action = actionRun
@@ -56,6 +56,8 @@ func actionRun(c *cli.Context) (err error) {
 
 	err = statsd.Save(client, result)
 	if err == nil {
+		defer client.Flush()
+
 		fmt.Printf("All done! Bye-bye!\r\n")
 	}
 
