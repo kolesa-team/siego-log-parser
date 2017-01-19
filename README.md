@@ -5,8 +5,8 @@ Siego-log-parser
 
 ## Параметры:
 
-   --file value, -f value     Имя файла с логом siego
-   --address value, -a value  Адрес statsd с в формате «хост:порт»
-   --prefix value, -p value   Префикс для записи в statsd
-   --help, -h                 Вывести эту справку
-   --version, -v              Вывести версию парсера
+    --file value, -f value     Имя файла с логом siego
+    --address value, -a value  Адрес statsd с в формате «хост:порт»
+    --prefix value, -p value   Префикс для записи в statsd
+    --help, -h                 Вывести эту справку
+    --version, -v              Вывести версию парсера
