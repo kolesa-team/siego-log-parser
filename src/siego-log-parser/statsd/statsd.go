@@ -1,16 +1,19 @@
 package statsd
 
 import (
+	"time"
+
 	"../schema"
 
 	"gopkg.in/alexcesaro/statsd.v2"
-	"time"
 )
 
+// NewStatsd — creates statsd client
 func NewStatsd(address, prefix string) (*statsd.Client, error) {
 	return statsd.New(statsd.Address(address), statsd.Prefix(prefix))
 }
 
+// Save — saves statistics structure to statsd
 func Save(client *statsd.Client, statistics *schema.Statistics) error {
 	sendInt(client, "transactions", statistics.Transactions)
 	sendFloat(client, "availability", statistics.Availability)
@@ -39,7 +42,7 @@ func Save(client *statsd.Client, statistics *schema.Statistics) error {
 }
 
 func sendDuration(client *statsd.Client, bucket string, duration time.Duration) {
-	client.Timing(bucket, int(duration / time.Millisecond))
+	client.Timing(bucket, int(duration/time.Millisecond))
 }
 
 func sendFloat(client *statsd.Client, bucket string, value float64) {

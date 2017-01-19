@@ -2,10 +2,8 @@ package schema
 
 import (
 	"encoding/xml"
-	//"fmt"
 	"strconv"
 	"strings"
-	//"time"
 	"time"
 )
 
@@ -69,6 +67,7 @@ type rawStatistics struct {
 	Percentiles            rawPercentile `xml:"percentiles,omitempty"`
 }
 
+// Percentile — represents percentiles for response time
 type Percentile struct {
 	P10 time.Duration
 	P20 time.Duration
@@ -81,6 +80,7 @@ type Percentile struct {
 	P90 time.Duration
 }
 
+// Statistics — represents statistics structure
 type Statistics struct {
 	Transactions           int
 	Availability           float64
@@ -97,6 +97,7 @@ type Statistics struct {
 	Percentiles            Percentile
 }
 
+// ParseStatistics — parses byte array to statistics structure
 func ParseStatistics(data []byte) (*Statistics, error) {
 	result := Statistics{}
 	statistics := rawStatistics{}
